@@ -88,6 +88,8 @@ namespace Server
 		bool CommandListPlayers(const std::vector<std::string>& Arguments, CommandContext& context);
 		std::string ListPlayers();
 
+		bool CommandListServers(const std::vector<std::string>& Arguments, CommandContext & context);
+
 		bool VariableModeUpdate(const std::vector<std::string>& Arguments, CommandContext& context);
 		bool SetLobbyMode(Blam::ServerLobbyMode mode);
 

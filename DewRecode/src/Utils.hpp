@@ -1,5 +1,6 @@
 #pragma once
 #include <ElDorito/ElDorito.hpp>
+#include <rapidjson/document.h>
 
 // can't be called Utils because we use that for a namespace.. ugh
 class PublicUtils : public IUtils
@@ -35,6 +36,7 @@ public:
 	std::vector<std::string> Wrap(const std::string& string, size_t lineLength);
 
 	HttpRequest HttpSendRequest(const std::wstring& uri, const std::wstring& method, const std::wstring& userAgent, const std::wstring& username, const std::wstring& password, const std::wstring& headers, void* body, DWORD bodySize);
+	rapidjson::Document GetJSON(std::string url);
 	UPnPResult UPnPForwardPort(bool tcp, int externalport, int internalport, const std::string& ruleName);
 
 	void GetEndpoints(std::vector<std::string>& destVect, const std::string& endpointType);

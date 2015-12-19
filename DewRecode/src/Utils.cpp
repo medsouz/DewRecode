@@ -700,6 +700,42 @@ HttpRequest PublicUtils::HttpSendRequest(const std::wstring& uri, const std::wst
 	return retVal;
 }
 
+rapidjson::Document PublicUtils::GetJSON(std::string url)
+{
+	std::stringstream ss;
+	rapidjson::Document json;
+	HttpRequest req = HttpSendRequest(WidenString(url), L"GET", L"ElDewrito/" + WidenString(ElDorito::Instance().Engine.GetDoritoVersionString()), L"", L"", L"", NULL, 0);
+	if (req.Error != HttpRequestError::None)
+	{
+		ss << "Unable to connect to server " << url << " (error: " << (int)req.Error << "/" << req.LastError << "/" << std::to_string(GetLastError()) << ")" << std::endl << std::endl;
+		throw ss.str();
+	}
+
+	// make sure the server replied with 200 OK
+	std::wstring expected = L"HTTP/1.1 200 OK";
+	if (req.ResponseHeader.length() < expected.length())
+	{
+		ss << "Invalid server response from " << url << std::endl << std::endl;
+		throw ss.str();
+	}
+
+	auto respHdr = req.ResponseHeader.substr(0, expected.length());
+	if (respHdr.compare(expected))
+	{
+		ss << "Invalid server response from " << url << std::endl << std::endl;
+		throw ss.str();
+	}
+
+	// parse the json response
+	std::string resp = std::string(req.ResponseBody.begin(), req.ResponseBody.end());
+	if (json.Parse<0>(resp.c_str()).HasParseError() || !json.IsObject())
+	{
+		ss << "Invalid server JSON response from " << url << std::endl << std::endl;
+		throw ss.str();
+	}
+	return json;
+}
+
 UPnPResult PublicUtils::UPnPForwardPort(bool tcp, int externalport, int internalport, const std::string& ruleName)
 {
 	struct UPNPUrls urls;
