@@ -17,6 +17,7 @@ namespace UI
 			Command::CreateCommand("UI", "ShowH3UI", "show_ui", "Attempts to force a H3UI widget to open", eCommandFlagsNone, BIND_COMMAND(this, &UICommandProvider::CommandShowH3UI)),
 			Command::CreateCommand("UI", "SettingsMenu", "settings", "Opens the ElDewrito settings menu", eCommandFlagsNone, BIND_COMMAND(this, &UICommandProvider::CommandSettingsMenu), { "menuName(string) The menu to open, can be blank" }),Command::CreateCommand("UI", "ShowConsole", "console_show", "Shows/hides the console", eCommandFlagsNone, BIND_COMMAND(this, &UICommandProvider::CommandShowConsole)),
 			Command::CreateCommand("UI", "PlayerSettings", "playersettings", "Shows/hides the player settings window", eCommandFlagsNone, BIND_COMMAND(this, &UICommandProvider::CommandPlayerSettings)),
+			Command::CreateCommand("UI", "ServerList", "serverlist", "Shows/hides the server list window", eCommandFlagsNone, BIND_COMMAND(this, &UICommandProvider::CommandServerList)),
 		};
 
 		return commands;
@@ -75,6 +76,23 @@ namespace UI
 	void UICommandProvider::ShowPlayerSettings(bool show)
 	{
 		ElDorito::Instance().UserInterface.ShowPlayerSettings(show);
+	}
+
+	bool UICommandProvider::CommandServerList(const std::vector<std::string>& Arguments, CommandContext& context)
+	{
+		bool show = true;
+		if (Arguments.size() > 0)
+			if (Arguments[0] == "false" || Arguments[0] == "no" || Arguments[0] == "0")
+				show = false;
+
+		ShowServerList(show);
+
+		return true;
+	}
+
+	void UICommandProvider::ShowServerList(bool show)
+	{
+		ElDorito::Instance().UserInterface.ShowServerList(show);
 	}
 
 	bool UICommandProvider::CommandShowH3UI(const std::vector<std::string>& Arguments, CommandContext& context)

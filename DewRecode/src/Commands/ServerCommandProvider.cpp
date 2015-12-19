@@ -9,6 +9,8 @@
 #include "ServerCommandProvider.hpp"
 #include "../ElDorito.hpp"
 
+#include "../UI/Windows//ServerListWindow.hpp"
+
 #include <ElDorito/Blam/BlamNetwork.hpp>
 #include "../CommandContexts/RemoteConsoleContext.hpp"
 
@@ -859,16 +861,29 @@ namespace Server
 	bool ServerCommandProvider::CommandListServers(const std::vector<std::string>& Arguments, CommandContext& context)
 	{
 		std::stringstream ss;
+		auto& dorito = ElDorito::Instance();
+		std::vector<ServerCommandProvider::Server> servers = ListServers();
+
+		for (auto server : servers)
+		{
+			ss << server.name << " - By " << server.hostPlayer << std::endl;
+			ss << "\t" << server.map << " | " << server.variant << " (" << server.numPlayers << "/" << server.maxPlayers << ")" << std::endl << std::endl;
+		}
+
+		context.WriteOutput(ss.str());
+		return true;
+	}
+
+	std::vector<ServerCommandProvider::Server> ServerCommandProvider::ListServers()
+	{
+		std::vector<ServerCommandProvider::Server> servers;
 		std::vector<std::string> listEndpoints;
 		std::set<std::string> gameServers;
 		auto& dorito = ElDorito::Instance();
 
-		HttpRequest req;
 		rapidjson::Document json;
 
 		dorito.Utils.GetEndpoints(listEndpoints, "list");
-		if (listEndpoints.size() <= 0)
-			ss << "No announce endpoints found." << std::endl;
 
 		for (auto masterServer : listEndpoints)
 		{
@@ -878,36 +893,31 @@ namespace Server
 
 				if (!json.HasMember("result"))
 				{
-					ss << "Master server JSON response from " << masterServer << " is missing data." << std::endl << std::endl;
 					continue;
 				}
 
 				auto& result = json["result"];
 				if (result["code"].GetInt() != 0)
 				{
-					ss << "Master server " << masterServer << " returned error code " << result["code"].GetInt() << " (" << result["msg"].GetString() << ")" << std::endl << std::endl;
 					continue;
 				}
 
 				if (!result.HasMember("servers"))
 				{
-					ss << "Master server list JSON response from " << masterServer << " is missing server list." << std::endl << std::endl;
 					continue;
 				}
 
 				auto& servers = result["servers"];
 				for (rapidjson::SizeType i = 0; i < servers.Size(); i++)
 				{
-					std::stringstream serverURL;
-					serverURL << "http://" << servers[i].GetString() << "/";
+					std::string serverURL = servers[i].GetString();
 					//Prevent duplicate servers if the user has multiple master servers
-					if (gameServers.find(serverURL.str()) == gameServers.end())
-						gameServers.insert(serverURL.str());
+					if (gameServers.find(serverURL) == gameServers.end())
+						gameServers.insert(serverURL);
 				}
 			}
 			catch (...)
 			{
-				ss << "Exception during master server list request to " << masterServer << std::endl << std::endl;
 				continue;
 			}
 
@@ -917,26 +927,33 @@ namespace Server
 		{
 			try
 			{
-				json = dorito.Utils.GetJSON(gameServer);
+				std::stringstream ss;
+				ss << "http://" << gameServer << "/";
+				json = dorito.Utils.GetJSON(ss.str());
 
 				if (!json.HasMember("name") || !json.HasMember("hostPlayer") || !json.HasMember("map") || !json.HasMember("variant") || !json.HasMember("numPlayers") || !json.HasMember("maxPlayers"))
 				{
-					ss << "Master server JSON response from " << gameServer << " is missing server info." << std::endl << std::endl;
 					continue;
 				}
 
-				ss << json["name"].GetString() << " - By " << json["hostPlayer"].GetString() << std::endl;
-				ss << "\t" << json["map"].GetString() << " | " << json["variant"].GetString() << " (" << json["numPlayers"].GetInt() << "/" << json["maxPlayers"].GetInt() << ")" << std::endl << std::endl;
+				ServerCommandProvider::Server server;
+				server.host = gameServer;
+				server.name = json["name"].GetString();
+				server.hostPlayer = json["hostPlayer"].GetString();
+				server.map = json["map"].GetString();
+				server.variant = json["variant"].GetString();
+				server.numPlayers = json["numPlayers"].GetInt();
+				server.maxPlayers = json["maxPlayers"].GetInt();
+
+				servers.push_back(server);
 			}
 			catch (...)
 			{
-				ss << "Exception during server request to " << gameServer << std::endl << std::endl;
 				continue;
 			}
 		}
 
-		context.WriteOutput(ss.str());
-		return true;
+		return servers;
 	}
 
 	bool ServerCommandProvider::VariableModeUpdate(const std::vector<std::string>& Arguments, CommandContext& context)

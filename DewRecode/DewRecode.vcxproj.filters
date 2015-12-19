@@ -177,6 +177,9 @@
     <ClCompile Include="src\ModPacks\ModField.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\UI\Windows\ServerListWindow.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\ElDorito.hpp">
@@ -435,6 +438,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\ModPacks\ModField.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\UI\Windows\ServerListWindow.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

@@ -56,6 +56,16 @@ namespace Server
 
 		BYTE SyslinkData[0x176];
 
+		struct Server {
+			std::string host;
+			std::string name;
+			std::string hostPlayer;
+			std::string map;
+			std::string variant;
+			int numPlayers;
+			int maxPlayers;
+		};
+
 		std::vector<RemoteConsoleContext*> RconContexts;
 
 		virtual std::vector<Command> GetCommands() override;
@@ -89,6 +99,7 @@ namespace Server
 		std::string ListPlayers();
 
 		bool CommandListServers(const std::vector<std::string>& Arguments, CommandContext & context);
+		std::vector<ServerCommandProvider::Server> ListServers();
 
 		bool VariableModeUpdate(const std::vector<std::string>& Arguments, CommandContext& context);
 		bool SetLobbyMode(Blam::ServerLobbyMode mode);

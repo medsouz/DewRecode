@@ -339,6 +339,8 @@ namespace UI
 			chat->Draw();
 		if (playerSettings)
 			playerSettings->Draw();
+		if (serverList)
+			serverList->Draw();
 
 		ImGui::Render();
 	}
@@ -384,6 +386,7 @@ namespace UI
 		this->chat = std::make_shared<ChatWindow>();
 		this->console = std::make_shared<ConsoleWindow>(ElDorito::Instance().CommandManager.ConsoleContext);
 		this->playerSettings = std::make_shared<PlayerSettingsWindow>();
+		this->serverList = std::make_shared<ServerListWindow>();
 	}
 
 	bool UserInterface::ShowChat(bool show)
@@ -430,6 +433,19 @@ namespace UI
 		return show;
 	}
 
+	bool UserInterface::ShowServerList(bool show)
+	{
+		if (!serverList)
+			return false;
+
+		if (show)
+			serverList->UpdateServerList();
+
+		serverList->SetVisible(show);
+		if (show)
+			ShowUI(true);
+		return show;
+	}
 
 	void UserInterface::Shutdown()
 	{

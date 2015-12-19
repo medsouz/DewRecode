@@ -145,6 +145,7 @@
     <ClCompile Include="src\UI\Windows\ConsoleWindow.cpp" />
     <ClCompile Include="src\UI\Windows\MessageBoxWindow.cpp" />
     <ClCompile Include="src\UI\Windows\PlayerSettingsWindow.cpp" />
+    <ClCompile Include="src\UI\Windows\ServerListWindow.cpp" />
     <ClCompile Include="src\Utils.cpp" />
     <ClCompile Include="src\Utils\pugixml.cpp" />
     <ClCompile Include="src\Utils\VersionInfo.cpp" />
@@ -209,6 +210,7 @@
     <ClInclude Include="src\UI\Windows\ConsoleWindow.hpp" />
     <ClInclude Include="src\UI\Windows\MessageBoxWindow.hpp" />
     <ClInclude Include="src\UI\Windows\PlayerSettingsWindow.hpp" />
+    <ClInclude Include="src\UI\Windows\ServerListWindow.hpp" />
     <ClInclude Include="src\Utils\pugiconfig.hpp" />
     <ClInclude Include="src\Utils\pugixml.hpp" />
     <ClInclude Include="src\_CSkeleton.hpp" />

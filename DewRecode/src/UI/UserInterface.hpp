@@ -8,6 +8,7 @@
 #include "Windows/ConsoleWindow.hpp"
 #include "Windows/MessageBoxWindow.hpp"
 #include "Windows/PlayerSettingsWindow.hpp"
+#include "Windows/ServerListWindow.hpp"
 
 struct CUSTOMVERTEX
 {
@@ -37,6 +38,7 @@ namespace UI
 		std::shared_ptr<ChatWindow> chat;
 		std::shared_ptr<ConsoleWindow> console;
 		std::shared_ptr<PlayerSettingsWindow> playerSettings;
+		std::shared_ptr<ServerListWindow> serverList;
 	
 		bool createFontsTexture();
 		bool createDeviceObjects();
@@ -56,6 +58,7 @@ namespace UI
 		bool ShowChat(bool show);
 		bool ShowConsole(bool show);
 		bool ShowPlayerSettings(bool show);
+		bool ShowServerList(bool show);
 		bool ShowMessageBox(const std::string& title, const std::string& message, const std::string& tag, std::vector<std::string> choices, MsgBoxCallback callback);
 		void WriteToConsole(const std::string& text);
 		void AddToChat(const std::string& text, ChatWindowTab tab);
