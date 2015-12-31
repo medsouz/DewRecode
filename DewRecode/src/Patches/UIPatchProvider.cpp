@@ -73,7 +73,7 @@ namespace UI
 			Patch("StartMenuHook8", 0x016A6C80, startMenuHook),
 
 			// hook c_main_menu_screen_widget::ButtonPress so we can show settings menu if they push start
-			Patch("MainMenuHook", 0x0169FCA8, mainMenuHook),
+			//Patch("MainMenuHook", 0x0169FCA8, mainMenuHook),
 
 			// hook c_gui_screen_pregame_lobby::ButtonPress so we can open game options
 			// Sorta hacky way of getting game options screen to show when you press X/start in lobby
@@ -89,7 +89,7 @@ namespace UI
 			Hook("ShowH3PauseMenu2", 0x7B6826, UI_ShowHalo3PauseMenu, HookType::Call),
 
 			// Fix menu update code to include missing mainmenu code
-			Hook("MenuUpdate", 0xADFB73, UI_MenuUpdateHook, HookType::Call),
+			//Hook("MenuUpdate", 0xADFB73, UI_MenuUpdateHook, HookType::Call),
 
 			// Localized string override hook
 			Hook("LocalizedString", 0x51E040, LocalizedStringHook, HookType::Jmp),
