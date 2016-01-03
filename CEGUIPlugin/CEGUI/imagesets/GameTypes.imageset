@@ -1,0 +1,11 @@
+<Imageset autoScaled="" imagefile="GameTypes.png" name="Unknown" nativeHorzRes="810" nativeVertRes="90" version="2">
+    <Image height="90" name="Assault" width="90" xPos="0" yPos="0" />
+    <Image height="90" name="Forge" width="90" xPos="180" yPos="0" />
+    <Image height="90" name="CTF" width="90" xPos="90" yPos="0" />
+    <Image height="90" name="Infection" width="90" xPos="270" yPos="0" />
+    <Image height="90" name="Juggernaut" width="90" xPos="360" yPos="0" />
+    <Image height="90" name="KOTH" width="90" xPos="450" yPos="0" />
+    <Image height="90" name="Juggernaut" width="90" xPos="540" yPos="0" />
+    <Image height="90" name="Slayer" width="90" xPos="630" yPos="0" />
+    <Image height="90" name="Territories" width="90" xPos="720" yPos="0" />
+</Imageset>

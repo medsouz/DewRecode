@@ -1,0 +1,6 @@
+<Imageset autoScaled="" imagefile="ElDewrito.png" name="ElDewrito" nativeHorzRes="800" nativeVertRes="600" version="2">
+    <Image height="106" name="Title" width="643" xPos="0" yPos="0" />
+    <Image height="106" name="Logo" width="123" xPos="0" yPos="0" />
+    <Image height="40" name="ButtonBackground_Hover" width="400" xPos="0" yPos="159" />
+    <Image height="40" name="ButtonBackground" width="400" xPos="0" yPos="119" />
+</Imageset>

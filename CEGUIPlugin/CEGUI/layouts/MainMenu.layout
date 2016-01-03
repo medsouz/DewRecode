@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<GUILayout version="4" >
+    <Window type="DefaultWindow" name="Root" >
+        <Property name="Area" value="{{0,0},{0,0},{1,0},{1,0}}" />
+        <Property name="MaxSize" value="{{1,0},{1,0}}" />
+        <Window type="DefaultWindow" name="Menu" >
+            <Property name="Area" value="{{0.1,0},{0.5,0},{0.1,450},{0.5,350}}" />
+            <Property name="MaxSize" value="{{1,0},{1,0}}" />
+            <Window type="Generic/Image" name="Title" >
+                <Property name="Area" value="{{0,0},{0,0},{0,428},{0,70}}" />
+                <Property name="Image" value="ElDewrito/Title" />
+                <Property name="MaxSize" value="{{1,0},{1,0}}" />
+                <Property name="PixelAligned" value="false" />
+            </Window>
+            <Window type="DefaultWindow" name="MenuButtons" >
+                <Property name="Area" value="{{0,0},{0,90},{0,400},{0,290}}" />
+                <Property name="MaxSize" value="{{1,0},{1,0}}" />
+                <Window type="Generic/ImageButton" name="btnServers" >
+                    <Property name="Area" value="{{0,0},{0,0},{0,350},{0,40}}" />
+                    <Property name="HoverImage" value="ElDewrito/ButtonBackground_Hover" />
+                    <Property name="NormalImage" value="ElDewrito/ButtonBackground" />
+                    <Property name="PushedImage" value="ElDewrito/ButtonBackground" />
+                    <Property name="DisabledImage" value="ElDewrito/ButtonBackground" />
+                    <Property name="HorzImageFormatting" value="LeftAligned" />
+                    <Property name="VertImageFormatting" value="TopAligned" />
+                    <Window type="Generic/Label" name="lblServers" >
+                        <Property name="Area" value="{{0,20},{0,0},{1,0},{1,0}}" />
+                        <Property name="Font" value="DejaVuSans-14" />
+                        <Property name="Text" value="Server Browser" />
+                        <Property name="MaxSize" value="{{1,0},{1,0}}" />
+                        <Property name="HorzFormatting" value="LeftAligned" />
+                        <Property name="NormalTextColour" value="FFFFFFFF" />
+                        <Property name="MousePassThroughEnabled" value="true" />
+                        <Property name="MouseInputPropagationEnabled" value="true" />
+                    </Window>
+                </Window>
+                <Window type="Generic/ImageButton" name="btnLocalGame" >
+                    <Property name="Area" value="{{0,0},{0,50},{0,350},{0,90}}" />
+                    <Property name="HoverImage" value="ElDewrito/ButtonBackground_Hover" />
+                    <Property name="NormalImage" value="ElDewrito/ButtonBackground" />
+                    <Property name="PushedImage" value="ElDewrito/ButtonBackground" />
+                    <Property name="DisabledImage" value="ElDewrito/ButtonBackground" />
+                    <Property name="HorzImageFormatting" value="LeftAligned" />
+                    <Property name="VertImageFormatting" value="TopAligned" />
+                    <Window type="Generic/Label" name="lblLocalGame" >
+                        <Property name="Area" value="{{0,20},{0,0},{1,0},{1,0}}" />
+                        <Property name="Font" value="DejaVuSans-14" />
+                        <Property name="Text" value="Local Game" />
+                        <Property name="MaxSize" value="{{1,0},{1,0}}" />
+                        <Property name="HorzFormatting" value="LeftAligned" />
+                        <Property name="NormalTextColour" value="FFFFFFFF" />
+                        <Property name="MousePassThroughEnabled" value="true" />
+                        <Property name="MouseInputPropagationEnabled" value="true" />
+                    </Window>
+                </Window>
+                <Window type="Generic/ImageButton" name="btnForge" >
+                    <Property name="Area" value="{{0,0},{0,100},{0,350},{0,140}}" />
+                    <Property name="HoverImage" value="ElDewrito/ButtonBackground_Hover" />
+                    <Property name="NormalImage" value="ElDewrito/ButtonBackground" />
+                    <Property name="PushedImage" value="ElDewrito/ButtonBackground" />
+                    <Property name="DisabledImage" value="ElDewrito/ButtonBackground" />
+                    <Property name="HorzImageFormatting" value="LeftAligned" />
+                    <Property name="VertImageFormatting" value="TopAligned" />
+                    <Window type="Generic/Label" name="lblForge" >
+                        <Property name="Area" value="{{0,20},{0,0},{1,0},{1,0}}" />
+                        <Property name="Font" value="DejaVuSans-14" />
+                        <Property name="Text" value="Forge" />
+                        <Property name="MaxSize" value="{{1,0},{1,0}}" />
+                        <Property name="HorzFormatting" value="LeftAligned" />
+                        <Property name="NormalTextColour" value="FFFFFFFF" />
+                        <Property name="MousePassThroughEnabled" value="true" />
+                        <Property name="MouseInputPropagationEnabled" value="true" />
+                    </Window>
+                </Window>
+            </Window>
+        </Window>
+    </Window>
+</GUILayout>

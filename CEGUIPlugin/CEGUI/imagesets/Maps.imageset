@@ -1,0 +1,14 @@
+<Imageset autoScaled="" imagefile="Maps.png" name="Unknown" nativeHorzRes="900" nativeVertRes="1200" version="2">
+    <Image height="200" name="s3d_avalanche" width="450" xPos="0" yPos="0" />
+    <Image height="200" name="s3d_edge" width="450" xPos="450" yPos="0" />
+    <Image height="200" name="guardian" width="450" xPos="0" yPos="200" />
+    <Image height="200" name="deadlock" width="450" xPos="450" yPos="200" />
+    <Image height="200" name="s3d_turf" width="450" xPos="0" yPos="400" />
+    <Image height="200" name="zanzibar" width="450" xPos="450" yPos="400" />
+    <Image height="200" name="s3d_reactor" width="450" xPos="450" yPos="600" />
+    <Image height="200" name="chill" width="450" xPos="0" yPos="600" />
+    <Image height="200" name="shrine" width="450" xPos="0" yPos="800" />
+    <Image height="200" name="bunkerworld" width="450" xPos="450" yPos="800" />
+    <Image height="200" name="riverworld" width="450" xPos="450" yPos="1000" />
+    <Image height="200" name="cyberdyne" width="450" xPos="0" yPos="1000" />
+</Imageset>
